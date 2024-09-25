@@ -12,6 +12,11 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+const pokemon = localFont({
+  src: "./fonts/PokemonSolid.woff",
+  variable: "--font-pokemon-mono",
+  weight: "100 900",
+});
 
 export const metadata: Metadata = {
   title: "Pokémon Dashboard | Manage and View Your Collection",
@@ -59,7 +64,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased px-3 py-3 md:px-10 md:py-5 `}
+        className={`${geistSans.variable} ${geistMono.variable} ${pokemon.variable} antialiased px-3 py-3 md:px-10 md:py-5 bg-white `}
       >
         {children}
       </body>

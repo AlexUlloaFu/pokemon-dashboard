@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Important Notes
 
-Two branches : main with the search functionality implemented but a more intrincate code and lite with no search functionality and more simple and elegant code
+It can be optimized reducing the amount of fetching to different endpoints to the API , but for purpouses of a good presentation I kept all this fetching
 
 ## Third-party Libraries
 

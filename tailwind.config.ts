@@ -71,6 +71,9 @@ const config: Config = {
       animation: {
         "fade-in-up": "fade-in-up 0.5s ease-out",
       },
+      fontFamily: {
+        pokemon: ["var(--font-pokemon-mono)"],
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

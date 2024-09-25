@@ -3,6 +3,7 @@ export interface PokemonData {
   spriteURL: string;
   height: string;
   weight: string;
+  color: string;
   moves: Array<string>;
   types: Array<string>;
 }
