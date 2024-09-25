@@ -4,7 +4,7 @@ import axios from "axios";
 import { PokemonData } from "../types/PokemonTypes";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-async function PokemonCard({ url, pokemonDataProp }: { url?: string; pokemonDataProp?: any }) {
+async function PokemonCard({ url }: { url: string }) {
   const pokemonData: PokemonData = {
     name: "",
     spriteURL: "",
@@ -13,35 +13,26 @@ async function PokemonCard({ url, pokemonDataProp }: { url?: string; pokemonData
     weight: "0",
     moves: [],
   };
-
-  let rawData = pokemonDataProp;
-
-  //IF NO DATA WAS PASSED BY PARAMS THEN TRY TO FETCH WITH THE URL
-  if (!rawData && url) {
-    try {
-      const res = await axios.get(url);
-      rawData = res.data;
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        console.error("ERROR --> Could not fetch pokemon data from API: ", e.message);
-      } else {
-        console.error("ERROR --> An unknown error occurred.");
-      }
+  try {
+    const res = await axios.get(url);
+    const data = res.data;
+    pokemonData.name = data.name;
+    pokemonData.height = data.height;
+    pokemonData.weight = data.weight;
+    pokemonData.spriteURL = data.sprites.other["official-artwork"].front_default;
+    pokemonData.moves = data.moves?.slice(0, 4).map((moveSlot: any) => {
+      return moveSlot.move.name;
+    });
+    pokemonData.types = data.types.map((typeSlot: any) => {
+      return typeSlot.type.name;
+    });
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      console.error("ERROR --> Could not fetch pokemon data from API: ", e.message);
+    } else {
+      console.error("ERROR --> An unknown error occurred.");
     }
   }
-  if (!rawData) return;
-
-  pokemonData.name = rawData.name;
-  pokemonData.height = rawData.height;
-  pokemonData.weight = rawData.weight;
-  pokemonData.spriteURL = rawData.sprites.other["official-artwork"].front_default;
-  pokemonData.moves = rawData.moves?.slice(0, 4).map((moveSlot: any) => {
-    return moveSlot.move.name;
-  });
-  pokemonData.types = rawData.types.map((typeSlot: any) => {
-    return typeSlot.type.name;
-  });
-
   return (
     <Card className="col-span-1 animate-fade-in-up">
       <CardHeader>
