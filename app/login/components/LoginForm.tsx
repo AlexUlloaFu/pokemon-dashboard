@@ -41,7 +41,7 @@ function LoginForm() {
   }
 
   return (
-    <section>
+    <section className="flex justify-center items-center w-full h-dvh">
       <Card className="col-span-1 animate-fade-in-up">
         <CardHeader>
           <CardTitle className="uppercase">Login</CardTitle>
