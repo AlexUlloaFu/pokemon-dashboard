@@ -7,6 +7,7 @@ import PokemonsPagination from "./components/PokemonsPagination";
 import PokemonCard from "./components/PokemonCard";
 import UserProfile from "./components/UserProfile";
 import SearchPokemon from "./components/SearchPokemon";
+import Link from "next/link";
 
 type Props = {
   searchParams?: {
@@ -54,9 +55,11 @@ export default async function Home({ searchParams }: Props) {
     <div className="">
       <main className="flex justify-center flex-col items-center space-y-5">
         <div className="w-full flex justify-center ">
-          <h1 className="text-3xl lg:text-[60px] font-pokemon tracking-widest text-yellow-400 ">
-            Pokémon
-          </h1>
+          <Link href={"/"}>
+            <h1 className="text-3xl lg:text-[60px] font-pokemon tracking-widest text-yellow-400 ">
+              Pokémon
+            </h1>
+          </Link>
           <div className="flex justify-end items-baseline w-full ">
             <UserProfile />
           </div>

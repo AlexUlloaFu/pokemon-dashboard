@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { FaSearch } from "react-icons/fa";
+import { GiCardRandom } from "react-icons/gi";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -28,6 +29,13 @@ function SearchPokemon() {
     const { searchArg } = data;
     const currentParams = new URLSearchParams(searchParams.toString()); // Get current search params
     currentParams.set("search", searchArg.toLowerCase());
+    router.push(`/?${currentParams.toString()}`);
+  };
+
+  const pseudoRandomSearch = () => {
+    const randomID = Math.floor(Math.random() * (1000 - 1 + 1)) + 1;
+    const currentParams = new URLSearchParams(searchParams.toString()); // Get current search params
+    currentParams.set("search", randomID.toString());
     router.push(`/?${currentParams.toString()}`);
   };
 
@@ -57,6 +65,9 @@ function SearchPokemon() {
           />
           <Button type="submit">
             <FaSearch size={20} />
+          </Button>
+          <Button type="button" onClick={pseudoRandomSearch}>
+            <GiCardRandom size={30} />
           </Button>
         </form>
       </Form>
