@@ -15,6 +15,5 @@ export async function logIn(formData: FormData) {
 
 export async function logOut() {
   cookies().set("session", "", { expires: new Date(0) });
-
-  redirect("/");
+  redirect("/login");
 }
