@@ -25,6 +25,7 @@ async function PokemonCard({ pokemonData }: { pokemonData: PokemonData }) {
                   width={79 / 1.5}
                   height={27 / 1.5}
                   className="mt-2"
+                  defaultValue={""}
                 />
               )
             );
@@ -32,7 +33,13 @@ async function PokemonCard({ pokemonData }: { pokemonData: PokemonData }) {
         </div>
       </CardHeader>
       <CardContent>
-        <Image alt="Pokemon artwork" src={pokemonData.spriteURL} width={237} height={237} />
+        <Image
+          alt="Pokemon artwork"
+          src={pokemonData.spriteURL}
+          width={237}
+          height={237}
+          defaultValue={""}
+        />
         <p className="font-semibold mt-1">Moves : </p>
         <div className="grid grid-cols-2 gap-2 my-2 ">
           {pokemonData.moves &&

@@ -57,7 +57,7 @@ export default async function Home({ searchParams }: Props) {
         <div className="w-full flex justify-center ">
           <Link href={"/"}>
             <h1 className="text-3xl lg:text-[60px] font-pokemon tracking-widest text-yellow-400 ">
-              Pokémon
+              Pokémons
             </h1>
           </Link>
           <div className="flex justify-end items-baseline w-full ">
@@ -101,7 +101,7 @@ const getPokemonCardDataFromRawData = async (rawData: any) => {
   pokemonData.height = rawData.height;
   pokemonData.weight = rawData.weight;
   pokemonData.color = resSpecies.data.color.name;
-  pokemonData.spriteURL = rawData.sprites.other["official-artwork"].front_default;
+  pokemonData.spriteURL = rawData.sprites.other["official-artwork"].front_default ?? "";
   pokemonData.moves = rawData.moves?.slice(0, 4).map((moveSlot: any) => {
     return moveSlot.move.name;
   });
